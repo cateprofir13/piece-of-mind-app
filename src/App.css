@@ -1,42 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Root styling — no width constraint */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Landing page background */
+.landing {
+  height: 100vh;
+  width: 100vw; /* ✅ full screen width */
+  background-image: url('/adam.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-@keyframes logo-spin {
+/* Puzzle page layout */
+.puzzle-page {
+  height: 100vh;
+  width: 100vw; /* ✅ Make it take full screen width */
+  background-image: url('/or.png');
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding-top: 4rem; /* Prevent nav overlap */
+  box-sizing: border-box;
+}
+
+.puzzle-page input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-style: oblique;
+  border: 2px solid #8e1ee9;
+  border-radius: 6px;
+  width: 250px;
+  text-align: center;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  left: 0; /* ✅ fixed from 'left: 5;' which was ineffective */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #8e1ee9;
+  font-weight: bold;
+
+  border: 2px solid #99929f;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: white;
+}
+
+
+.puzzle-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #8e1ee9;
+  padding: 1rem 2rem;
+  border: 3px solid #8e1ee9;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(142, 30, 233, 0.4);
+  animation: pulseGlow 2s infinite alternate;
+  transition: transform 0.3s ease;
+}
+
+/* Optional hover effect */
+.puzzle-title:hover {
+  transform: scale(1.05);
+}
+
+/* Subtle animated glow */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(142, 30, 233, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(142, 30, 233, 0.7);
+  }
+}
+
+.puzzle-prompt {
+  font-size: 2.25rem;
+  color: #941094;
+  overflow: hidden;
+  border-right: 2px solid #8e1ee9;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards;
+  font-family: 'Courier New', monospace;
+}
+
+/* Typing animation */
+@keyframes typing {
   from {
-    transform: rotate(0deg);
+    width: 0;
   }
   to {
-    transform: rotate(360deg);
+    width: 100%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900; /* 🔥 Boldest weight */
+  color: #1f6581;
+  text-align: center;
+
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),   /* soft bottom-right shadow */
+    0 0 15px rgba(121, 168, 209, 0.6); /* glowing purple aura */
+
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: -50vh;
+  margin-left: 65vh;
+
+  animation: floatTitle 3s ease-in-out infinite alternate;
 }
 
-.card {
-  padding: 2em;
-}
+.hero-subtitle {
+  font-size: 4rem;
+  font-weight: 900; /* 🔥 Boldest weight */
+  color: #1f6581;
+  text-align: center;
 
-.read-the-docs {
-  color: #888;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),   /* soft bottom-right shadow */
+    0 0 15px rgba(121, 168, 209, 0.6); /* glowing purple aura */
+
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 40rem;
 }
